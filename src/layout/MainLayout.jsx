@@ -64,7 +64,7 @@ const MainLayout = () => {
                       <span className="badge badge-xs badge-primary bg-secondary indicator-item"></span>
                     </div>
                   </button>
-                  <ul tabIndex={0} className="mt-3 z-[1] p-6 shadow menu menu-sm dropdown-content bg-base-100 rounded-box">
+                  <ul tabIndex={0} className="mt-3 z-10 p-6 shadow menu menu-sm dropdown-content bg-base-100 rounded-box">
                     <li className='w-[300px] p-6 border border-gray-300 rounded-lg mb-3 font-bold text-md cursor-pointer bg-secondary text-white hover:opacity-50 transition-all flex items-center justify-between'>2 Nouvelles Discussion <MdForum className='text-xl' /></li>
                     <li className="w-[300px] p-6 border border-gray-300 rounded-lg mb-3 font-bold text-md cursor-pointer hover:bg-gray-100 transition-all flex items-center justify-between">Monja a commenté votre discussion <FaCommentAlt className='text-xl' /></li>
                     <li className="w-[300px] p-6 border border-gray-300 rounded-lg font-bold text-md cursor-pointer hover:bg-gray-100 transition-all flex items-center justify-between">Cousema a publié un nouveau projet <MdComputer className='text-xl' /></li>
@@ -76,8 +76,8 @@ const MainLayout = () => {
                       <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                     </div>
                   </div>
-                  <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                    <li><Link to="/profile/project">Mon Profile</Link></li>
+                  <ul tabIndex={0} className="mt-3 z-10  p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                    <li><Link to="/">Mon Profile</Link></li>
                     <li><Link to="/settings">Paramètres</Link></li>
                     <li><Link to="/logout">Déconnexion</Link></li>
                   </ul>

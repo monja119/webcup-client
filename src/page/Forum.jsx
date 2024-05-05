@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+
+import {listForums} from '../services/forumService'
 
 // data
 import {ForumColor} from "../data/ForumColor"
@@ -11,7 +13,22 @@ import ForumCard from '../Components/ForumCard'
 import { BiComment } from "react-icons/bi"
 import { FaRegStar } from "react-icons/fa"
 
+import { format_date_time } from '../utils/helper'
+
 const Forum = () => {
+    const [forums, setForums] = useState([])
+    
+  useEffect(() => {
+    listForums().then(async (data) => {
+      const response = await data
+      console.log(response.data.data)
+      setForums(response.data.data)
+    }).catch((error) => {
+      console.log(error)
+    }
+    );
+  }, [])
+
     const [allCommentsFilter, setAllCommentsFilter] = useState(true)
     const [followingCommentsFilter, setFollowingCommentsFilter] = useState(false)
 
@@ -40,10 +57,15 @@ const Forum = () => {
                     </select>
 
                     <div className="w-full h-full mt-12 px-6 flex flex-col gap-12 overflow-y-scroll overflow-x-hidden">
-                        <ForumCard/>
-                        <ForumCard/>
-                        <ForumCard/>
-                        <ForumCard/>
+                        {
+                            forums?.map((forum, index) => {
+                                return (
+                                    <ForumCard key={index} username={forum.title} createdAt={format_date_time(forum.created_at)} commentNumber={5}>
+                                        {forum.description}
+                                    </ForumCard>
+                                )
+                            })
+                        }
                     </div>
                 </div>
                 <div className="md:w-1/4 w-full h-full md:flex hidden flex-col p-12">  

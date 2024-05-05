@@ -7,14 +7,15 @@ import Event from "../page/Event"
 import ProfileSetting from "../page/ProfileSetting"
 
 import LogOut from "../page/settings/logOut"
+import Profile from "../page/profile/Profile"
 
 // community
 import ListMembers from "../page/community/members/List"
 
 export const withLayoutRoutes = [
-    { path: "/",component: <Home/>},
+    { path: "/",component: <Profile/>},
     { path: "/forum", component: <Forum/>},
-    { path: "/project",component: <Project/>},
+    { path: "/projects",component: <Project/>},
     { path: "/events",component: <Event/>},
     { path: "/settings",component: <ProfileSetting/>},
 

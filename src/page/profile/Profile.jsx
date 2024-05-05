@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 
 // Router
 import { NavLink, Outlet} from 'react-router-dom'
@@ -9,7 +9,16 @@ import { BsTelephone } from "react-icons/bs"
 import { CiMail } from "react-icons/ci"
 import { LuGithub } from "react-icons/lu"
 
+import { useData } from '../../contexts/DataContext'
+
 const Profile = () => {
+    const { user } = useData()
+    const [userData, setUserData] = useState({})
+
+    useEffect(() => {
+        setUserData(user)
+        console.log(user)
+    }, [user])
   return (
     <div className="w-full h-full p-20 pt-[6em]">
         <div className="w-full h-full rounded-md shadow-xl p-12 flex flex-col overflow-y-scroll" style={{background: "#fff"}}>
@@ -26,8 +35,13 @@ const Profile = () => {
 
                     
                     <div className="ml-6 flex flex-col h-full justify-center">
-                        <h1 className="font-bold text-2xl mb-1">Rosa Dodson</h1>
-                        <h3 className="text-lg text-gray-700">UI/UX Designer</h3>
+                        <h1 className="font-bold text-2xl mb-1">{ userData?.name }</h1>
+                        <h3 className="text-lg text-gray-700">
+                            {userData?.skills }
+                        </h3>
+                        <h5 className="text-lg text-gray-700 opacity-75">
+                            Id : {userData?.id }
+                        </h5>
                     </div>
                 </div>
 
@@ -36,18 +50,26 @@ const Profile = () => {
                     <div className="flex items-center gap-3">
                         <BsTelephone className="text-xl text-secondary "/>
                         <h4 className="font-bold">Téléphone</h4>
-                        <span>033 40 304 10</span>
+                        <span>
+                            { userData?.phone ? userData.phone : "Non renseigné" }
+                        </span>
                     </div>
 
                     <div className="flex items-center gap-3">
                         <CiMail className="text-xl text-secondary"/>
                         <h4 className="font-bold">Email</h4>
-                        <span>033 40 304 10</span>
+                        <span>
+                        { userData?.email ? userData.email : "Non renseigné" }
+                        </span>
                     </div>
                     <div className="flex items-center gap-3">
                         <LuGithub className="text-xl text-secondary"/>
                         <h4 className="font-bold">Github</h4>
-                        <a href="https://github.com/MiantsaFanirina/" className="underline text-secondary">https://github.com/MiantsaFanirina/</a>
+                        <a 
+                            href={ userData?.github ? userData.github : "#" } 
+                            className="underline text-secondary">
+                        { userData?.github ? userData.github : "Non renseigné" }
+                        </a>
                     </div>
 
                 </div>
@@ -58,9 +80,9 @@ const Profile = () => {
             <div className='w-full h-[1px] bg-gray-100 my-6'></div>
 
             <nav className='flex gap-4'>
-                <NavLink className="ProfileNavLink" to="/profile/project">Mes Projet</NavLink>
-                <NavLink className="ProfileNavLink" to="/profile/topic">Mes Discussion</NavLink>
-                <NavLink className="ProfileNavLink" to="/profile/recompense">Récompense</NavLink>
+                <NavLink className="ProfileNavLink" to="/">Mes Projet</NavLink>
+                <NavLink className="ProfileNavLink" to="/Mytopic">Mes Discussion</NavLink>
+                <NavLink className="ProfileNavLink" to="/MyRecompense">Récompense</NavLink>
             </nav>
 
             <div className='w-full h-[1px] bg-gray-100 my-6'></div>

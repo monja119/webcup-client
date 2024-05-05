@@ -9,6 +9,9 @@ import { validated_email, validated_phone } from "../../utils/validator"
 import { authentification, register } from "../../services/authService"
 import Loader from "../../Components/Loader"
 
+import Lottie from 'react-lottie'
+import animationData from '../../lottie/banner.json'
+
 // Ui
 // import { ButtonSubmit } from "../../UIComponents/button/ButtonSubmit"
 
@@ -181,6 +184,14 @@ export default function Sign () {
     }
   }, [])
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+};
   return (
     <div className="sign">
       <main>
@@ -319,10 +330,7 @@ export default function Sign () {
                   </div> */}
 
                   
-                  {/* <button className="addProject" onClick={()=>document.getElementById('AddProjectModal').showModal()}>Ajouter un/des projet(s)</button>
-                  <p className="mt-3 mb-6 text">
-                    <span>0 projet(s)</span> ajouté(s)
-                  </p> */}
+                  
 
                   
 
@@ -342,13 +350,17 @@ export default function Sign () {
 
             <div className="carousel">
               <div className="images-wrapper">
-                <img src="/veteran.gif" className="image img-1 show" alt="" />
+                <Lottie 
+                  options={defaultOptions}
+                  height={400}
+                  width={400}
+              />
               </div>
 
               <div className="text-slider">
                 <div className="text-wrap">
                   <div className="text-group">
-                    <h2>Facile et rapide, en quelques cliques</h2>
+                    <h2>Bonjour à vous vétéran</h2>
                   </div>
                 </div>
 
@@ -360,7 +372,6 @@ export default function Sign () {
           </div>
         </div>
       </main>
-      <AddProjectModal projects={projects} setProjects={setProjects}/>
       {load ? <Loader/> : ""}
     </div>
   )

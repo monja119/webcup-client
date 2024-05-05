@@ -9,6 +9,26 @@ import { IoNewspaperOutline } from "react-icons/io5";
 
 export const sideBarLayout  = [
     {
+        "icon": FaUser,
+        "name": "Profile",
+        "path": "/profile",
+        "component": "Profile",
+        "children": {
+            "Mon Compte": {
+                "icon": FaUser,
+                "name": "Mon Compte",
+                "path": "/profile",
+                "component": "Account"
+            },
+            "Mentorat & Networking": {
+                "icon": FaAndroid,
+                "name": "Mentorat & Networking",
+                "path": "/profile/mentorship",
+                "component": "Mentorship"
+            },
+        }
+    },
+    {
         "icon": FaUsers,
         "name": "Communauté",
         "path": "/community/forum",
@@ -29,13 +49,13 @@ export const sideBarLayout  = [
             "Projets": {
                 "icon": FaLaptopCode,
                 "name": "Projets",
-                "path": "/community/projects",
+                "path": "/projects",
                 "component": "Projects"
             },
             "Ressources": {
                 "icon": SlDocs,
                 "name": "Ressources",
-                "path": "/community/resources",
+                "path": "/resources",
                 "component": "Resources"
             },
             "Members": {
@@ -43,11 +63,37 @@ export const sideBarLayout  = [
                 "name": "Members",
                 "path": "/community/members",
                 "component": "Members",
-                "onlyAdmin": true
+                "children":{}
             },
         }
     },
     {
+        "icon": CiSettings,
+        "name": "Paramètres",
+        "path": "/settings",
+        "component": "Settings",
+        "children": {
+            "Paramètres": {
+                "icon": CiSettings,
+                "name": "Paramètres",
+                "path": "/settings",
+                "component": "Settings"
+            },
+            "Aide": {
+                "icon": IoIosHelp ,
+                "name": "Aide",
+                "path": "/settings/help",
+                "component": "Help"
+            },
+            "Déconnexion": {
+                "icon": MdOutlineLogout,
+                "name": "Déconnexion",
+                "path": "/settings/logout",
+                "component": "Logout"
+            },
+        }
+    },
+        {
         "icon": IoNewspaperOutline,
         "name": "Actualités",
         "path": "/news",
@@ -60,5 +106,5 @@ export const sideBarLayout  = [
                 "component": "News"
             },
         }
-    },
+    }
 ];

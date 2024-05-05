@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import { createPortal } from "react-dom";
 
+import { createProject } from "../services/projectServices";
+
 // icons
 import { SlSocialGithub } from "react-icons/sl";
 import { GoProject, GoLink } from "react-icons/go";
 
 // components
 import AddProjectCardItem from "./AddProjectCardItem";
+import { useData } from "../contexts/DataContext";
 
 const AddProjectModal = ({projects, setProjects}) => {
   const [projectName, setProjectName] = useState('');
   const [projectLink, setProjectLink] = useState('');
   const [githubLink, setGithubLink] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
+  const { user } = useData();
 
   const handleAddProject = () => {
     // Add the new project to the list
@@ -35,6 +39,40 @@ const AddProjectModal = ({projects, setProjects}) => {
     updatedProjects.splice(index, 1);
     setProjects(updatedProjects);
   };
+
+
+  const handleSaveProjects = async () => {
+    // Save the projects to the database
+    await createProject(projects);
+    // Reset the projects list
+    setProjects([]);
+  }
+  
+
+  const saveProjects = async () => {
+    await projects.forEach(projet => {
+      if(projet.projectName === "" || projet.projectLink === "" || projet.githubLink === "" || projet.projectDescription === ""){
+        alert("Veuillez remplir tous les champs");
+        return;
+      }
+      
+      const data = {
+        name: projet.projectName,
+        url: projet.projectLink,
+        github: projet.githubLink,
+        description: projet.projectDescription,
+        user_id: user.id
+      };
+      
+      createProject(data);
+    });
+
+    // await 5 s
+    setTimeout(() => {
+      window.location.reload();
+    }, 5000);
+    
+  }
 
   return createPortal(
     <dialog id="AddProjectModal" className="modal m-0 h-full absolute top-0 left-0">
@@ -114,9 +152,14 @@ const AddProjectModal = ({projects, setProjects}) => {
 
         {/* Modal action */}
         <div className="modal-action">
+          {/* Button to save projects */}
+          <button onClick={saveProjects} className="bg-success text-white py-2 px-4 rounded-md shadow hover:opacity-70 transition-all">
+            Enregistrer les projets
+          </button>
+
           <form method="dialog">
             {/* Button to close modal */}
-            <button className="bg-main text-secondary py-2 px-4 rounded-md shadow hover:opacity-70 transition-all">Close</button>
+            <button className="bg-main text-secondary py-2 px-4 rounded-md shadow hover:opacity-70 transition-all">Annuler</button>
           </form>
         </div>
       </div>

@@ -35,10 +35,10 @@ function App() {
                 <Route key={index} path={route.path} element={route.component}></Route>
                 ))
               }
-              <Route path='/profile' element={<Profile/>}>
-                  <Route path="/profile/project" element={<MyProject/>}></Route>
-                  <Route path="/profile/topic" element={<MyTopic/>}></Route>
-                  <Route path="/profile/recompense" element={<Recompense/>}></Route>
+              <Route path='/' element={<Profile/>}>
+                  <Route index element={<MyProject/>}></Route>
+                  <Route path="/Mytopic" element={<MyTopic/>}></Route>
+                  <Route path="/MyRecompense" element={<Recompense/>}></Route>
               </Route>
           </Route>
           
