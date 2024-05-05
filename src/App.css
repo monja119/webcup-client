@@ -1,0 +1,16 @@
+
+body{
+    background-color: #ffd1c5;
+}
+
+.ProfileNavLink {
+    transition: all 0.3s ease-in-out;
+}
+
+.ProfileNavLink.active, .ProfileNavLink:hover {
+    color: #e8166d;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}

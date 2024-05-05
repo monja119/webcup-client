@@ -1,9 +1,4 @@
-UI components
-- boutton
-- modal
-- input
-- filter
-- card
-- list
-- table
-- chart
+Lottie file 
+- coding couleur de fond #ffd1c5
+- loading
+- 404
