@@ -64,7 +64,6 @@ export default function Sign () {
       .then((res) => {
         if(res.status === 202) {
           setLoad(false)
-          console.log(res.data)
           setErrorLogin('')
           localStorage.setItem('webcup_user', JSON.stringify(res.data.user))
           localStorage.setItem('webcup_token', JSON.stringify(res.data.token))

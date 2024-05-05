@@ -11,13 +11,13 @@ export const sideBarLayout  = [
     {
         "icon": FaUser,
         "name": "Profile",
-        "path": "/profile",
+        "path": "/",
         "component": "Profile",
         "children": {
             "Mon Compte": {
                 "icon": FaUser,
                 "name": "Mon Compte",
-                "path": "/profile",
+                "path": "/",
                 "component": "Account"
             },
             "Mentorat & Networking": {

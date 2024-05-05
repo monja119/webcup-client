@@ -21,7 +21,6 @@ const Forum = () => {
   useEffect(() => {
     listForums().then(async (data) => {
       const response = await data
-      console.log(response.data.data)
       setForums(response.data.data)
     }).catch((error) => {
       console.log(error)

@@ -17,7 +17,6 @@ const Profile = () => {
 
     useEffect(() => {
         setUserData(user)
-        console.log(user)
     }, [user])
   return (
     <div className="w-full h-full p-20 pt-[6em]">

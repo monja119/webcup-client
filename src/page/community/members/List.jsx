@@ -8,7 +8,6 @@ export default function ListMembers() {
         activateUser(id)
         .then(async (res) => {
             const response= await res.data;
-            console.log(response);
             window.location.reload();
         });
     }
@@ -17,7 +16,6 @@ export default function ListMembers() {
         deactivateUser(id)
         .then(async (res) => {
             const response= await res.data;
-            console.log(response);
             window.location.reload();
         });
     }
